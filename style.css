@@ -1,0 +1,161 @@
+/* Lara Dahlhaus – Stylesheet
+   Farben zentral hier ändern: */
+:root {
+  --bg: #faf7f2;          /* Hintergrund (warmes Off-White) */
+  --text: #2f2a26;        /* Fließtext */
+  --muted: #6f655c;       /* Nebentexte */
+  --accent: #7a8b6f;      /* Salbeigrün */
+  --accent-dark: #5a6a50; /* Links, Überschriften-Akzente */
+  --line: #e4ddd2;        /* Trennlinien */
+  --card: #ffffff;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--accent-dark); }
+h1, h2, h3 { font-weight: normal; line-height: 1.25; }
+h1 { font-size: 2.2rem; margin: 0; }
+h2 { font-size: 1.7rem; margin: 0 0 1.2rem; }
+h3 { font-size: 1.2rem; margin: 1.6rem 0 0.3rem; color: var(--accent-dark); }
+p { margin: 0 0 1rem; }
+
+/* ---------- Menü ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(250, 247, 242, 0.96);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--sans); font-size: 0.92rem;
+}
+.nav-inner {
+  max-width: 54rem; margin: 0 auto; padding: 0.85rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+}
+.nav .brand { color: var(--text); text-decoration: none; font-weight: 600; white-space: nowrap; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.3rem; overflow-x: auto; scrollbar-width: none; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav ul a { color: var(--muted); text-decoration: none; white-space: nowrap; }
+.nav ul a:hover { color: var(--accent-dark); }
+
+.wrap { max-width: 54rem; margin: 0 auto; padding: 0 1.5rem 3rem; }
+
+/* ---------- Kopfbereich ---------- */
+.hero {
+  display: grid; grid-template-columns: 1fr 15rem; gap: 3rem; align-items: center;
+  padding: 4.5rem 0 3.5rem;
+}
+.hero h1 { font-size: 2.8rem; }
+.subtitle {
+  font-family: var(--sans); color: var(--accent-dark); font-size: 0.9rem;
+  letter-spacing: 0.06em; text-transform: uppercase; margin: 0.7rem 0 1.4rem; line-height: 1.5;
+}
+.lead { font-size: 1.2rem; }
+.photo { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 0.6rem; }
+.button {
+  display: inline-block; margin-top: 0.6rem; padding: 0.75rem 1.5rem;
+  background: var(--accent); color: #fff; text-decoration: none; border-radius: 2rem;
+  font-family: var(--sans); font-size: 0.95rem;
+}
+.button:hover { background: var(--accent-dark); }
+
+/* ---------- Abschnitte ---------- */
+section { padding-top: 2.8rem; margin-top: 2.8rem; border-top: 1px solid var(--line); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14.5rem, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 0.6rem; padding: 1.3rem 1.4rem; }
+.card h3 { margin-top: 0; }
+.card p { margin: 0; font-size: 1.02rem; }
+
+.values { list-style: none; padding: 0; margin: 1.2rem 0; display: grid; gap: 0.9rem; }
+.values li { padding-left: 1.2rem; border-left: 3px solid var(--accent); }
+.values strong { font-weight: normal; color: var(--accent-dark); }
+
+.steps { list-style: none; counter-reset: step; padding: 0; margin: 0 0 1.2rem; }
+.steps li { counter-increment: step; position: relative; padding: 0 0 1.2rem 3rem; }
+.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0.1rem;
+  width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent); color: #fff;
+  font-family: var(--sans); font-size: 0.95rem; display: flex; align-items: center; justify-content: center;
+}
+.steps h3 { margin-top: 0; }
+.steps p { margin: 0; }
+
+/* Preistabelle */
+.prices { width: 100%; border-collapse: collapse; margin: 0.5rem 0 1.4rem; background: var(--card); border: 1px solid var(--line); border-radius: 0.6rem; overflow: hidden; }
+.prices th, .prices td { text-align: left; padding: 0.8rem 1.1rem; border-bottom: 1px solid var(--line); }
+.prices th { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--muted); background: #f3eee6; }
+.prices td.price { text-align: right; white-space: nowrap; }
+.prices th.price { text-align: right; }
+.prices tr:last-child td { border-bottom: none; }
+.prices td { white-space: nowrap; }
+.prices td.what { white-space: normal; }
+.prices td[rowspan] { vertical-align: top; border-right: 1px solid var(--line); }
+
+.note {
+  background: #f1efe7; border-radius: 0.6rem; padding: 1.1rem 1.3rem; margin: 1.4rem 0;
+  font-size: 0.98rem; color: var(--text);
+}
+.note p:last-child { margin-bottom: 0; }
+.small { font-size: 0.95rem; color: var(--muted); }
+.more { font-family: var(--sans); font-size: 0.95rem; }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1rem; }
+.contact-grid .card p { font-size: 1.05rem; margin: 0 0 0.9rem; }
+.contact-grid .card p:last-child { margin-bottom: 0; }
+.label { display: block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+
+/* ---------- Lebenslauf ---------- */
+.cv-head { display: grid; grid-template-columns: 13rem 1fr; gap: 2.5rem; align-items: start; padding: 3.5rem 0 1rem; }
+.timeline { list-style: none; padding: 0; margin: 0; }
+.timeline li { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+.timeline li:last-child { border-bottom: none; }
+.timeline .year { font-family: var(--sans); color: var(--muted); font-size: 0.92rem; padding-top: 0.15rem; }
+.timeline .where { display: block; font-size: 0.98rem; color: var(--muted); }
+
+/* ---------- Unterseiten (Impressum, Datenschutz) ---------- */
+.page { padding-top: 3rem; }
+.page h1 { margin-bottom: 1.5rem; }
+.page h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; }
+
+/* ---------- Fuß ---------- */
+footer {
+  margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+  font-family: var(--sans); font-size: 0.85rem; color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem;
+}
+footer a { color: var(--muted); }
+
+/* ---------- Handy ---------- */
+@media (max-width: 680px) {
+  body { font-size: 1.06rem; }
+  .nav .brand { display: none; }
+  .nav-inner { padding: 0.7rem 1rem; justify-content: center; }
+  .nav ul { flex-wrap: wrap; justify-content: center; gap: 0.35rem 1.1rem; overflow: visible; font-size: 0.9rem; }
+  html { scroll-padding-top: 6rem; }
+  .wrap { padding: 0 1.2rem 2.5rem; }
+  .hero { grid-template-columns: 1fr; padding-top: 2.2rem; gap: 1.8rem; }
+  .hero .photo-wrap { order: -1; max-width: 13rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .cv-head { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 2.2rem; }
+  .cv-head .photo { max-width: 12rem; }
+  .timeline li { grid-template-columns: 1fr; gap: 0.1rem; }
+  .prices th, .prices td { padding: 0.7rem 0.8rem; }
+}
+
+/* Fußnoten-Sternchen */
+.fn { font-size: 0.7em; line-height: 0; margin-left: 0.1em; }
+.fn a { text-decoration: none; }
+.label .fn a { color: var(--accent-dark); }
+.page ul { padding-left: 1.2rem; }
+.page li { margin-bottom: 0.5rem; }
